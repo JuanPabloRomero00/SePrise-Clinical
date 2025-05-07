@@ -1,0 +1,133 @@
+:root {
+  /* Paleta de colores */
+  --color-claro: #CBDAD5;   /* Fondo general */
+  --color-primario: #89A7B1; /* Detalles, botones secundarios */
+  --color-secundario: #566981; /* Navegación, encabezados */
+  --color-destacado: #3A415A; /* Botones, títulos destacados */
+  --color-oscuro: #34344E;  /* Footer, fondo alternativo */
+
+  --fuente-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-claro);
+  color: var(--color-oscuro);
+}
+
+.container {
+  display: flex;
+  width: 90%;
+  max-width: 1200px;
+  height: 80vh;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.left-column {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-is {
+  width: 60%;
+  height: auto;
+  object-fit: cover;
+}
+
+.right-column {
+  flex: 1;
+  padding: 40px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: var(--color-destacado);
+  font-size: 36px;
+}
+
+form label {
+  margin-top: 15px;
+  font-weight: bold;
+  display: block;
+  color: var(--color-destacado);
+}
+
+form input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.password-container {
+  position: relative;
+}
+
+.btn-login {
+  margin-top: 25px;
+  width: 100%;
+  padding: 12px;
+  color: var(--color-claro);
+  background-color: var(--color-destacado);
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-login:hover {
+  background-color: #0056b3;
+}
+
+.links {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  width: 100%;
+}
+
+.links a {
+  text-decoration: none;
+  color: var(--color-secundario);
+}
+
+.links a:hover {
+  color: #0056b3;
+}
+
+.register {
+  margin-top: 20px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.register a {
+  color: var(--color-secundario);
+  text-decoration: none;
+}
+
+.register a:hover {
+  color: #0056b3;
+}

@@ -1,12 +1,10 @@
 :root {
-  
-  --color-claro: #CBDAD5;   /* Fondo general */
-  --color-primario: #89A7B1; /* Detalles, botones secundarios */
-  --color-secundario: #566981; /* Navegación, encabezados */
-  --color-destacado: #3A415A; /* Botones, títulos destacados */
-  --color-oscuro: #34344E;  /* Footer, fondo alternativo */
-
-  --fuente-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --color-claro: #cbdad5;
+  --color-primario: #89a7b1;
+  --color-secundario: #566981;
+  --color-destacado: #3a415a;
+  --color-oscuro: #34344e;
+  --fuente-principal: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 * {
@@ -22,7 +20,6 @@ body {
   line-height: 1.6;
 }
 
-
 header {
   background-color: var(--color-secundario);
   color: white;
@@ -30,29 +27,63 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
 header .logo img {
-  height: 50px;
+  height: 70px;
 }
 
-nav ul {
-  list-style: none;
+/* Botón hamburguesa */
+.menu-toggle {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 2000;
+  display: block;
+}
+
+/* Menú desplegable oculto por defecto */
+#mainNav {
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  position: absolute;
+  top: 60px;
+  right: 1.5rem;
+  background-color: var(--color-secundario);
+  width: 220px;
+  padding: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1500;
+  border-radius: 6px;
+}
+
+#mainNav.show {
   display: flex;
-  gap: 1.5rem;
 }
 
-nav a {
+#mainNav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#mainNav a {
   color: white;
   text-decoration: none;
   font-weight: bold;
 }
 
-nav a:hover {
-  text-decoration: underline;
-}
-
-
+/* Banner */
 .banner {
   position: relative;
   text-align: center;
@@ -65,8 +96,17 @@ nav a:hover {
   display: block;
 }
 
+.banner-texto h1 {
+  font-size: 1.8rem;
+  text-align: center;
+}
 
+.banner-texto p {
+  font-size: 1rem;
+  text-align: center;
+}
 
+/* Secciones generales */
 section {
   padding: 4rem 2rem;
 }
@@ -85,37 +125,18 @@ h2 {
   margin-bottom: 1rem;
 }
 
-
-.nosotros .contenido {
-  text-align: center;
-}
-
-.nosotros .contenido img {
-  display: block;
-  margin: 0 auto;
-}
-
-
-.servicios h2 {
-  text-align: center;
-}
-
-
-.contacto h2 {
-  text-align: center;
-}
-
-
+.nosotros .contenido,
 .contacto-detalle {
   text-align: center;
 }
 
+.nosotros .contenido img,
 .contacto-detalle img {
   display: block;
   margin: 0 auto;
 }
 
-
+/* Servicios */
 .card-servicios {
   display: flex;
   flex-wrap: wrap;
@@ -144,12 +165,12 @@ h2 {
   margin-bottom: 1rem;
 }
 
-
+/* Formulario */
 form {
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
   gap: 1rem;
 }
 
@@ -160,7 +181,7 @@ form textarea {
   border-radius: 5px;
   font-size: 1rem;
   width: 100%;
-  max-width: 400px; 
+  max-width: 400px;
 }
 
 form button {
@@ -172,14 +193,14 @@ form button {
   font-weight: bold;
   cursor: pointer;
   width: 100%;
-  max-width: 400px; 
+  max-width: 400px;
 }
 
 form button:hover {
   background-color: var(--color-secundario);
 }
 
-
+/* Footer */
 footer {
   background-color: var(--color-oscuro);
   color: white;
@@ -187,20 +208,21 @@ footer {
   padding: 1rem;
 }
 
+/* Botón scroll-top */
 #scrollTopButton {
   display: none;
   position: fixed;
-  bottom: 25px;
-  right: 25px;
+  bottom: 20px;
+  right: 20px;
   z-index: 1000;
-  width: 50px;
-  height: 50px;
-  font-size: 20px;
-  line-height: 50px;
+  width: 44px;
+  height: 44px;
+  font-size: 18px;
+  line-height: 44px;
   text-align: center;
   border: none;
-  background-color: var(--color-destacado); 
-  color: var(--color-claro); 
+  background-color: var(--color-destacado);
+  color: var(--color-claro);
   border-radius: 50%;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   cursor: pointer;
@@ -208,121 +230,6 @@ footer {
 }
 
 #scrollTopButton:hover {
-  background-color: var(--color-secundario); 
+  background-color: var(--color-secundario);
   transform: translateY(-3px);
 }
-
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 2rem;
-  background-color: var(--color-secundario);
-}
-
-header .logo img {
-  height: 70px;
-}
-
-header nav ul {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-  margin: 0;
-  padding: 0;
-  align-items: center;
-}
-
-header nav a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1rem;
-}
-
-header nav a:hover {
-  color: var(--color-claro);
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  header .logo img {
-    margin-bottom: 10px;
-  }
-
-  header nav ul {
-    flex-direction: column;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0;
-  }
-
-  header nav a {
-    display: block;
-    width: 100%;
-    text-align: center;
-  }
-}
-
-  .banner-texto h1 {
-    font-size: 1.8rem;
-    text-align: center;
-  }
-
-  .banner-texto p {
-    font-size: 1rem;
-    text-align: center;
-  }
-
-  .card-img-top {
-  width: 100%;
-  height: 240px;
-  object-fit: cover;
-}
-  #scrollTopButton {
-    bottom: 20px;
-    right: 20px;
-    width: 44px;
-    height: 44px;
-    font-size: 18px;
-    line-height: 44px;
-  }
-  
-.menu-toggle {
-  background: none;
-  border: none;
-  font-size: 2rem;
-  color: white;
-  cursor: pointer;
-  margin-left: auto;
-}
-
-#mainNav.d-none {
-  display: none !important;
-}
-
-@media (max-width: 768px) {
-  #mainNav {
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    background-color: var(--color-secundario);
-    padding: 1rem 0;
-  }
-
-  #mainNav ul {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-}
-

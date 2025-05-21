@@ -1,138 +1,191 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <title>Clínica SePrise - Salud y Bienestar desde 1940</title>
-  <meta name="description" content="Clínica SePrise: atención médica de calidad desde 1940. Servicios de salud, laboratorio e imagenología con tecnología de punta.">
-  <meta name="keywords" content="clínica, salud, medicina, consulta médica, exámenes, imagenología, SePrise">
-  <meta name="author" content="Clínica SePrise">
-  <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Clínica SePrise">
-  <meta property="og:description" content="Desde 1940 comprometidos con tu salud y bienestar.">
-  <meta property="og:image" content="img/banner.jpg">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://tusitio.com">
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-  
-  <header>
-    <div class="logo">
-      <img src="img/logo.png" alt="Logo de la clínica">
-    </div>
-    <button class="menu-toggle d-md-none" id="menuToggle">☰</button>
-    <nav id="mainNav" class="d-none d-md-flex">
-      <ul>
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#nosotros">Nosotros</a></li>
-        <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-        <li><a href="/sections/iniciarsesion.html">Iniciar Sesión</a></li>
-      </ul>
-    </nav>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <title>Clínica SePrise - Salud y Bienestar desde 1940</title>
+    <meta
+      name="description"
+      content="Clínica SePrise: atención médica de calidad desde 1940. Servicios de salud, laboratorio e imagenología con tecnología de punta."
+    />
+    <meta
+      name="keywords"
+      content="clínica, salud, medicina, consulta médica, exámenes, imagenología, SePrise"
+    />
+    <meta name="author" content="Clínica SePrise" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="Clínica SePrise" />
+    <meta
+      property="og:description"
+      content="Desde 1940 comprometidos con tu salud y bienestar."
+    />
+    <meta property="og:image" content="img/banner.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://tusitio.com" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="img/logo.png" alt="Logo de la clínica" />
+      </div>
 
-  
-  <section id="inicio" class="banner">
-    <img src="img/banner.jpg" alt="Imagen principal de la clínica">
-  </section>
+      <!-- Botón hamburguesa -->
+      <button class="menu-toggle" id="menuToggle">☰</button>
 
-  <section id="nosotros" class="nosotros py-5 bg-light">
-  <div class="container">
-    <h1 class="text-center mb-5">Sobre Nosotros</h1>
-    <div class="row">
-      <div class="col-12 col-md-4 mb-4">
-        <div class="card h-100 text-center">
-          <img src="img/doctora.jpg" class="card-img-top" alt="Atención Humana">
-          <div class="card-body">
-            <h5 class="card-title">Atención Humana</h5>
-            <p class="card-text">Nuestro equipo médico brinda atención personalizada con empatía y profesionalismo desde la primera consulta.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-4 mb-4">
-        <div class="card h-100 text-center">
-          <img src="img/doctores.jpg" class="card-img-top" alt="Equipo Multidisciplinario">
-          <div class="card-body">
-            <h5 class="card-title">Equipo Multidisciplinario</h5>
-            <p class="card-text">Contamos con profesionales de distintas especialidades que trabajan juntos para tu bienestar integral.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-4 mb-4">
-        <div class="card h-100 text-center">
-          <img src="img/support.jpg" class="card-img-top" alt="Contención y Confianza">
-          <div class="card-body">
-            <h5 class="card-title">Contención y Confianza</h5>
-            <p class="card-text">Cuidamos no solo tu salud física, también el acompañamiento emocional en cada etapa del tratamiento.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-  
+      <!-- Menú único -->
+      <nav id="mainNav">
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="/sections/iniciarsesion.html">Iniciar Sesión</a></li>
+        </ul>
+      </nav>
+    </header>
 
-  <section id="servicios" class="servicios py-5 bg-light">
-  <div class="container">
-    <h2 class="text-center mb-5">Servicios</h2>
-    <div class="row"> 
-      <div class="col-12 col-md-4 mb-4">
-        <div class="card h-100 text-center">
-          <img src="img/serv1.jpg" class="card-img-top" alt="Consulta Médica">
-          <div class="card-body">
-            <h5 class="card-title">Consulta Médica</h5>
-            <p class="card-text">Atención especializada de profesionales comprometidos con tu salud.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-4 mb-4">
-        <div class="card h-100 text-center">
-          <img src="img/serv2.jpg" class="card-img-top" alt="Exámenes de Laboratorio">
-          <div class="card-body">
-            <h5 class="card-title">Exámenes de Laboratorio</h5>
-            <p class="card-text">Resultados rápidos y precisos para todas tus necesidades diagnósticas.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-4 mb-4">
-        <div class="card h-100 text-center">
-          <img src="img/serv3.png" class="card-img-top" alt="Imagenología">
-          <div class="card-body">
-            <h5 class="card-title">Imagenología</h5>
-            <p class="card-text">Rayos X, ecografías y resonancias con tecnología de punta.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-  
-  <section id="contacto" class="contacto">
-    <h2>Contacto</h2>
-    <div class="contacto-detalle">
-      <p><strong>Dirección:</strong> Calle Falsa 123, Ciudad, País</p>
-      <p><strong>Teléfono:</strong> +54 911548965</p>
-      <p><strong>Email:</strong> info@SePrise.com</p>
-      <img src="imagenes/local.jpg" alt="Imagen del local de la clínica">
-    </div>
-    
-    <form action="enviar.php" method="post">
-      <input type="text" name="nombre" placeholder="Tu Nombre" required>
-      <input type="email" name="email" placeholder="Tu Email" required>
-      <textarea name="mensaje" placeholder="Tu Mensaje" required></textarea>
-      <button type="submit">Enviar</button>
-    </form>
-  </section>
+    <section id="inicio" class="banner">
+      <img src="img/banner.jpg" alt="Imagen principal de la clínica" />
+    </section>
 
-  
-  <footer>
-    <p>&copy; 2025 @SePrise Todos los derechos reservados.</p>
-  </footer>
-  <button id="scrollTopButton" title="Volver arriba">↑</button>
-  <script src="js/scrollTopButton.js"></script>
-  <script src="js/toggleMenu.js"></script>
-</body>
+    <section id="nosotros" class="nosotros py-5 bg-light">
+      <div class="container">
+        <h1 class="text-center mb-5">Sobre Nosotros</h1>
+        <div class="row">
+          <div class="col-12 col-md-4 mb-4">
+            <div class="card h-100 text-center">
+              <img
+                src="img/doctora.jpg"
+                class="card-img-top"
+                alt="Atención Humana"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Atención Humana</h5>
+                <p class="card-text">
+                  Nuestro equipo médico brinda atención personalizada con
+                  empatía y profesionalismo desde la primera consulta.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4 mb-4">
+            <div class="card h-100 text-center">
+              <img
+                src="img/doctores.jpg"
+                class="card-img-top"
+                alt="Equipo Multidisciplinario"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Equipo Multidisciplinario</h5>
+                <p class="card-text">
+                  Contamos con profesionales de distintas especialidades que
+                  trabajan juntos para tu bienestar integral.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4 mb-4">
+            <div class="card h-100 text-center">
+              <img
+                src="img/support.jpg"
+                class="card-img-top"
+                alt="Contención y Confianza"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Contención y Confianza</h5>
+                <p class="card-text">
+                  Cuidamos no solo tu salud física, también el acompañamiento
+                  emocional en cada etapa del tratamiento.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicios" class="servicios py-5 bg-light">
+      <div class="container">
+        <h2 class="text-center mb-5">Servicios</h2>
+        <div class="row">
+          <div class="col-12 col-md-4 mb-4">
+            <div class="card h-100 text-center">
+              <img
+                src="img/serv1.jpg"
+                class="card-img-top"
+                alt="Consulta Médica"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Consulta Médica</h5>
+                <p class="card-text">
+                  Atención especializada de profesionales comprometidos con tu
+                  salud.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4 mb-4">
+            <div class="card h-100 text-center">
+              <img
+                src="img/serv2.jpg"
+                class="card-img-top"
+                alt="Exámenes de Laboratorio"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Exámenes de Laboratorio</h5>
+                <p class="card-text">
+                  Resultados rápidos y precisos para todas tus necesidades
+                  diagnósticas.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4 mb-4">
+            <div class="card h-100 text-center">
+              <img
+                src="img/serv3.png"
+                class="card-img-top"
+                alt="Imagenología"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Imagenología</h5>
+                <p class="card-text">
+                  Rayos X, ecografías y resonancias con tecnología de punta.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="contacto">
+      <h2>Contacto</h2>
+      <div class="contacto-detalle">
+        <p><strong>Dirección:</strong> Calle Falsa 123, Ciudad, País</p>
+        <p><strong>Teléfono:</strong> +54 911548965</p>
+        <p><strong>Email:</strong> info@SePrise.com</p>
+        <img src="imagenes/local.jpg" alt="Imagen del local de la clínica" />
+      </div>
+
+      <form action="enviar.php" method="post">
+        <input type="text" name="nombre" placeholder="Tu Nombre" required />
+        <input type="email" name="email" placeholder="Tu Email" required />
+        <textarea name="mensaje" placeholder="Tu Mensaje" required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 @SePrise Todos los derechos reservados.</p>
+    </footer>
+    <button id="scrollTopButton" title="Volver arriba">↑</button>
+    <script src="js/scrollTopButton.js"></script>
+    <script src="js/toggleMenu.js"></script>
+  </body>
 </html>

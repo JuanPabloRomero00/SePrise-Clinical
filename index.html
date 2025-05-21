@@ -3,15 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SePrise</title>
-  <!-- Enlace a la hoja de estilos CSS -->
-  <link rel="stylesheet" href="../css/styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Clínica SePrise - Salud y Bienestar desde 1940</title>
+  <meta name="description" content="Clínica SePrise: atención médica de calidad desde 1940. Servicios de salud, laboratorio e imagenología con tecnología de punta.">
+  <meta name="keywords" content="clínica, salud, medicina, consulta médica, exámenes, imagenología, SePrise">
+  <meta name="author" content="Clínica SePrise">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Clínica SePrise">
+  <meta property="og:description" content="Desde 1940 comprometidos con tu salud y bienestar.">
+  <meta property="og:image" content="img/banner.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tusitio.com">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <!-- Cabecera: Logo y navegación principal -->
+  
   <header>
     <div class="logo">
-      <img src="" alt="Logo de la clínica">
+      <img src="img/logo.png" alt="Logo de la clínica">
     </div>
     <nav>
       <ul>
@@ -24,62 +33,91 @@
     </nav>
   </header>
 
-  <!-- Sección Banner: Imagen principal o slider -->
+  
   <section id="inicio" class="banner">
-    <!-- Imagen de banner principal -->
-    <img src="imagenes/banner.jpg" alt="Imagen principal de la clínica">
-    <div class="banner-texto">
-      <h1>SePrise</h1>
-      <p>Desde 1940 comprometidos con tu salud y bienestar</p>
-    </div>
+    <img src="img/banner.jpg" alt="Imagen principal de la clínica">
   </section>
 
-  <!-- Sección Nosotros: Información sobre la clínica -->
-  <section id="nosotros" class="nosotros">
-    <div class="contenido">
-      <h2>Sobre Nosotros</h2>
-      <p>Nuestra clínica se destaca por ofrecer servicios de salud de alta calidad, con un equipo profesional comprometido y tecnología de punta.</p>
-      <!-- Imagen ilustrativa del equipo o de las instalaciones -->
-      <img src="imagenes/nosotros.jpg" alt="Nuestro equipo o instalaciones">
+  <section id="nosotros" class="nosotros py-5 bg-light">
+  <div class="container">
+    <h1 class="text-center mb-5">Sobre Nosotros</h1>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 text-center">
+          <img src="img/doctora.jpg" class="card-img-top" alt="Atención Humana">
+          <div class="card-body">
+            <h5 class="card-title">Atención Humana</h5>
+            <p class="card-text">Nuestro equipo médico brinda atención personalizada con empatía y profesionalismo desde la primera consulta.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 text-center">
+          <img src="img/doctores.jpg" class="card-img-top" alt="Equipo Multidisciplinario">
+          <div class="card-body">
+            <h5 class="card-title">Equipo Multidisciplinario</h5>
+            <p class="card-text">Contamos con profesionales de distintas especialidades que trabajan juntos para tu bienestar integral.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 text-center">
+          <img src="img/support.jpg" class="card-img-top" alt="Contención y Confianza">
+          <div class="card-body">
+            <h5 class="card-title">Contención y Confianza</h5>
+            <p class="card-text">Cuidamos no solo tu salud física, también el acompañamiento emocional en cada etapa del tratamiento.</p>
+          </div>
+        </div>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
+  
 
-  <!-- Sección Servicios: Lista de los principales servicios -->
-  <section id="servicios" class="servicios">
-    <h2>Servicios</h2>
-    <div class="card-servicios">
-      <!-- Servicio 1 -->
-      <div class="servicio">
-        <img src="imagenes/servicio1.jpg" alt="Consulta médica">
-        <h3>Consulta Médica</h3>
-        <p>Atención especializada de profesionales comprometidos con tu salud.</p>
+  <section id="servicios" class="servicios py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-5">Servicios</h2>
+    <div class="row"> 
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 text-center">
+          <img src="img/serv1.jpg" class="card-img-top" alt="Consulta Médica">
+          <div class="card-body">
+            <h5 class="card-title">Consulta Médica</h5>
+            <p class="card-text">Atención especializada de profesionales comprometidos con tu salud.</p>
+          </div>
+        </div>
       </div>
-      <!-- Servicio 2 -->
-      <div class="servicio">
-        <img src="imagenes/servicio2.jpg" alt="Exámenes de laboratorio">
-        <h3>Exámenes de Laboratorio</h3>
-        <p>Resultados rápidos y precisos para todas tus necesidades diagnósticas.</p>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 text-center">
+          <img src="img/serv2.jpg" class="card-img-top" alt="Exámenes de Laboratorio">
+          <div class="card-body">
+            <h5 class="card-title">Exámenes de Laboratorio</h5>
+            <p class="card-text">Resultados rápidos y precisos para todas tus necesidades diagnósticas.</p>
+          </div>
+        </div>
       </div>
-      <!-- Servicio 3 -->
-      <div class="servicio">
-        <img src="imagenes/servicio3.jpg" alt="Imagenología">
-        <h3>Imagenología</h3>
-        <p>Rayos X, ecografías y resonancias con tecnología de punta.</p>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 text-center">
+          <img src="img/serv3.png" class="card-img-top" alt="Imagenología">
+          <div class="card-body">
+            <h5 class="card-title">Imagenología</h5>
+            <p class="card-text">Rayos X, ecografías y resonancias con tecnología de punta.</p>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
-
-  <!-- Sección Contacto: Información para comunicarte con la clínica -->
+  </div>
+</section>
+  
   <section id="contacto" class="contacto">
     <h2>Contacto</h2>
     <div class="contacto-detalle">
       <p><strong>Dirección:</strong> Calle Falsa 123, Ciudad, País</p>
       <p><strong>Teléfono:</strong> +54 911548965</p>
       <p><strong>Email:</strong> info@SePrise.com</p>
-      <!-- Imagen del local o mapa -->
       <img src="imagenes/local.jpg" alt="Imagen del local de la clínica">
     </div>
-    <!-- Formulario de contacto opcional -->
+    
     <form action="enviar.php" method="post">
       <input type="text" name="nombre" placeholder="Tu Nombre" required>
       <input type="email" name="email" placeholder="Tu Email" required>
@@ -88,9 +126,11 @@
     </form>
   </section>
 
-  <!-- Pie de Página: Información legal y derechos -->
+  
   <footer>
     <p>&copy; 2025 @SePrise Todos los derechos reservados.</p>
   </footer>
+  <button id="scrollTopButton" title="Volver arriba">↑</button>
+  <script src="js/javascript.js"></script>
 </body>
 </html>

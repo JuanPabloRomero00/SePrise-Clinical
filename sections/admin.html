@@ -26,12 +26,12 @@
     <meta property="og:image" content="img/banner.jpg" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://tusitio.com" />
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="../css/styles.css"/>
   </head>
   <body>
     <header>
       <div class="logo">
-        <img src="img/logo.png" alt="Logo de la clínica" />
+        <img src="../img/logo.png" alt="Logo de la clínica" />
       </div>
 
       <!-- Botón hamburguesa -->
@@ -44,13 +44,13 @@
           <li><a href="#nosotros">Nosotros</a></li>
           <li><a href="#servicios">Servicios</a></li>
           <li><a href="#contacto">Contacto</a></li>
-          <li><a href="/sections/iniciarsesion.html">Iniciar Sesión</a></li>
+          <li> <a href="../index.html">Cerrar sesion</a></li>
         </ul>
       </nav>
     </header>
 
     <section id="inicio" class="banner">
-      <img src="img/banner.jpg" alt="Imagen principal de la clínica" />
+      <img src="../img/banner.jpg" alt="Imagen principal de la clínica" />
     </section>
 
     <section id="nosotros" class="nosotros py-5 bg-light">
@@ -60,7 +60,7 @@
           <div class="col-12 col-md-4 mb-4">
             <div class="card h-100 text-center">
               <img
-                src="img/doctora.jpg"
+                src="../img/doctora.jpg"
                 class="card-img-top"
                 alt="Atención Humana"
               />
@@ -76,7 +76,7 @@
           <div class="col-12 col-md-4 mb-4">
             <div class="card h-100 text-center">
               <img
-                src="img/doctores.jpg"
+                src="../img/doctores.jpg"
                 class="card-img-top"
                 alt="Equipo Multidisciplinario"
               />
@@ -92,7 +92,7 @@
           <div class="col-12 col-md-4 mb-4">
             <div class="card h-100 text-center">
               <img
-                src="img/support.jpg"
+                src="../img/support.jpg"
                 class="card-img-top"
                 alt="Contención y Confianza"
               />
@@ -116,7 +116,7 @@
           <div class="col-12 col-md-4 mb-4">
             <div class="card h-100 text-center">
               <img
-                src="img/serv1.jpg"
+                src="../img/serv1.jpg"
                 class="card-img-top"
                 alt="Consulta Médica"
               />
@@ -132,7 +132,7 @@
           <div class="col-12 col-md-4 mb-4">
             <div class="card h-100 text-center">
               <img
-                src="img/serv2.jpg"
+                src="../img/serv2.jpg"
                 class="card-img-top"
                 alt="Exámenes de Laboratorio"
               />
@@ -148,7 +148,7 @@
           <div class="col-12 col-md-4 mb-4">
             <div class="card h-100 text-center">
               <img
-                src="img/serv3.png"
+                src="../img/serv3.png"
                 class="card-img-top"
                 alt="Imagenología"
               />
@@ -165,19 +165,11 @@
     </section>
 
     <section id="contacto" class="contacto">
-      <h2>Contacto</h2>
-      <img src="img/Contacto.png" alt="Imagen del local de la clínica" />
-      <div class="contacto-detalle">
-        <p><strong>Dirección:</strong> Calle Falsa 123, Ciudad, País</p>
-        <p><strong>Teléfono:</strong> +54 911548965</p>
-        <p><strong>Email:</strong> info@SePrise.com</p>
-    
-      </div>
-
-      <form action="enviar.php" method="post">
-        <input type="text" name="nombre" placeholder="Tu Nombre" required />
-        <input type="email" name="email" placeholder="Tu Email" required />
-        <textarea name="mensaje" placeholder="Tu Mensaje" required></textarea>
+      <h2>Registrar turno</h2>
+        <form action="enviar.php" method="post">
+        <input type="text" name="nombre" placeholder="Nombre Paciente" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <textarea name="mensaje" placeholder="Mensaje" required></textarea>
         <button type="submit">Enviar</button>
       </form>
     </section>
@@ -186,7 +178,7 @@
       <p>&copy; 2025 @SePrise Todos los derechos reservados.</p>
     </footer>
     <button id="scrollTopButton" title="Volver arriba">↑</button>
-    <script src="js/scrollTopButton.js"></script>
-    <script src="js/toggleMenu.js"></script>
+    <script src="../js/scrollTopButton.js"></script>
+    <script src="../js/toggleMenu.js"></script>
   </body>
 </html>

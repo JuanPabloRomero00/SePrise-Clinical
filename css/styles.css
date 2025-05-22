@@ -233,3 +233,19 @@ footer {
   background-color: var(--color-secundario);
   transform: translateY(-3px);
 }
+#contacto img {
+  max-width: 250px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  
+  display: block;
+  margin: 0 auto;
+}
+#contacto h2 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1rem;
+}

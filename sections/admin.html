@@ -1,6 +1,10 @@
 <!DOCTYPE html>
+
 <html lang="es">
-  <head>
+<head>
+<meta charset="utf-8"/>
+<title>Admin</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
@@ -27,9 +31,9 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://tusitio.com" />
     <link rel="stylesheet" href="../css/styles.css"/>
-  </head>
-  <body>
-    <header>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+ <header>
       <div class="logo">
         <img src="../img/logo.png" alt="Logo de la clínica" />
       </div>
@@ -48,131 +52,243 @@
         </ul>
       </nav>
     </header>
+<body class="bg-light p-3">
+  <div class="container">
+    <!-- Reservar Turno -->
+    <h3 class="mb-4">Reservar Turno</h3>
+    <div class="card p-4">
+      <form>
+        <label class="form-label" for="selectPlan">Selecciona tu plan de salud:</label>
+        <select class="form-select mb-2" id="selectPlan">
+          <option disabled selected value="">Elija un plan</option>
+          <option value="210">Plan individual</option>
+          <option value="310">Plan Familiar</option>
+          <option value="410">Particular</option>
+          <option value="510">Seprise frecuentes</option>
+          <option value="610">Seprise premium</option>
+        </select>
+        <div class="invalid-feedback"></div>
 
-    <section id="inicio" class="banner">
-      <img src="../img/banner.jpg" alt="Imagen principal de la clínica" />
-    </section>
+        <label class="form-label mt-3" for="selectEspecialidad">Especialidades:</label>
+        <select class="form-select mb-2" id="selectEspecialidad">
+          <option disabled selected value="">Elija una especialidad</option>
+          <option value="Pediatría">Laboratorio General</option>
+          <option value="Oftalmología">Análisis de Sangre</option>
+          <option value="Odontología">Espermograma</option>
+          <option value="Traumatología">Celiaquía</option>
+          <option value="Cardiología">ADN prenatal</option>
+          <option value="Endocrinología">Covid-19</option>
+          <option value="Ginecología">Dengue</option>
+          <option value="Otorrinolaringología">Trombofilia</option>
+          <option value="Psiquiatría">Embarazo</option>
+          <option value="Dermatología">Cariotipos</option>
+        </select>
+        <div class="invalid-feedback"></div>
 
-    <section id="nosotros" class="nosotros py-5 bg-light">
-      <div class="container">
-        <h1 class="text-center mb-5">Sobre Nosotros</h1>
-        <div class="row">
-          <div class="col-12 col-md-4 mb-4">
-            <div class="card h-100 text-center">
-              <img
-                src="../img/doctora.jpg"
-                class="card-img-top"
-                alt="Atención Humana"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Atención Humana</h5>
-                <p class="card-text">
-                  Nuestro equipo médico brinda atención personalizada con
-                  empatía y profesionalismo desde la primera consulta.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-md-4 mb-4">
-            <div class="card h-100 text-center">
-              <img
-                src="../img/doctores.jpg"
-                class="card-img-top"
-                alt="Equipo Multidisciplinario"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Equipo Multidisciplinario</h5>
-                <p class="card-text">
-                  Contamos con profesionales de distintas especialidades que
-                  trabajan juntos para tu bienestar integral.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-md-4 mb-4">
-            <div class="card h-100 text-center">
-              <img
-                src="../img/support.jpg"
-                class="card-img-top"
-                alt="Contención y Confianza"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Contención y Confianza</h5>
-                <p class="card-text">
-                  Cuidamos no solo tu salud física, también el acompañamiento
-                  emocional en cada etapa del tratamiento.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="servicios" class="servicios py-5 bg-light">
-      <div class="container">
-        <h2 class="text-center mb-5">Servicios</h2>
-        <div class="row">
-          <div class="col-12 col-md-4 mb-4">
-            <div class="card h-100 text-center">
-              <img
-                src="../img/serv1.jpg"
-                class="card-img-top"
-                alt="Consulta Médica"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Consulta Médica</h5>
-                <p class="card-text">
-                  Atención especializada de profesionales comprometidos con tu
-                  salud.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-md-4 mb-4">
-            <div class="card h-100 text-center">
-              <img
-                src="../img/serv2.jpg"
-                class="card-img-top"
-                alt="Exámenes de Laboratorio"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Exámenes de Laboratorio</h5>
-                <p class="card-text">
-                  Resultados rápidos y precisos para todas tus necesidades
-                  diagnósticas.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-md-4 mb-4">
-            <div class="card h-100 text-center">
-              <img
-                src="../img/serv3.png"
-                class="card-img-top"
-                alt="Imagenología"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Imagenología</h5>
-                <p class="card-text">
-                  Rayos X, ecografías y resonancias con tecnología de punta.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contacto" class="contacto">
-      <h2>Registrar turno</h2>
-        <form action="enviar.php" method="post">
-        <input type="text" name="nombre" placeholder="Nombre Paciente" required />
-        <input type="email" name="email" placeholder="Email" required />
-        <textarea name="mensaje" placeholder="Mensaje" required></textarea>
-        <button type="submit">Enviar</button>
+        <label class="form-label mt-3" for="fecha">Selecciona una fecha:</label>
+        <input class="form-control mb-2" id="fecha" type="date" />
+        <div class="invalid-feedback"></div>
       </form>
-    </section>
+
+      <div class="d-none mt-4" id="bloqueHorarios">
+        <label class="fw-bold mb-2">Horarios disponibles</label>
+        <div class="d-flex flex-wrap gap-2 mb-2" id="horariosContainer"></div>
+      </div>
+
+      <div class="input-group d-none mt-3" id="botonContinuar">
+        <button class="btn btn-outline-success" id="btnContinuar" type="button">Continuar</button>
+      </div>
+
+      <div class="alert alert-success mt-4 d-none" id="resumenTurno">
+        <div id="contenidoResumen"></div>
+        <button class="btn btn-sm btn-light mt-3" id="btnNuevoTurno">Reservar otro turno</button>
+      </div>
+    </div>
+
+    <!-- Cancelar Turno -->
+    <h3 class="mb-4 mt-5">Cancelar Turno</h3>
+    <div class="card p-4">
+      <form id="formCancelar">
+        <label class="form-label" for="nombreCancelar">Tu nombre completo:</label>
+        <input class="form-control mb-2" type="text" id="nombreCancelar" required />
+
+        <label class="form-label" for="emailCancelar">Tu correo electrónico:</label>
+        <input class="form-control mb-2" type="email" id="emailCancelar" required />
+
+        <label class="form-label" for="fechaCancelar">Fecha del turno:</label>
+        <input class="form-control mb-2" type="date" id="fechaCancelar" required />
+
+        <label class="form-label" for="motivoCancelar">Motivo de la cancelación:</label>
+        <textarea class="form-control mb-2" id="motivoCancelar" rows="3" required></textarea>
+
+        <button class="btn btn-outline-danger mt-2" id="btnCancelarTurno" type="submit">Cancelar Turno</button>
+      </form>
+
+      <div class="alert alert-warning mt-4 d-none" id="confirmacionCancelacion">
+        <div>
+          <strong>Tu turno ha sido cancelado con éxito.</strong><br />
+          Recibirás una confirmación por correo electrónico.
+        </div>
+        <button class="btn btn-sm btn-light mt-3" id="btnNuevaCancelacion">Cancelar otro turno</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // --- Reservar Turno ---
+      const selectPlan = document.getElementById("selectPlan");
+      const selectEspecialidad = document.getElementById("selectEspecialidad");
+      const inputFecha = document.getElementById("fecha");
+      const horariosContainer = document.getElementById("horariosContainer");
+      const bloqueHorarios = document.getElementById("bloqueHorarios");
+      const botonContinuar = document.getElementById("botonContinuar");
+      const btnContinuar = document.getElementById("btnContinuar");
+      const resumenTurno = document.getElementById("resumenTurno");
+      const contenidoResumen = document.getElementById("contenidoResumen");
+      const btnNuevoTurno = document.getElementById("btnNuevoTurno");
+
+      const hoy = new Date().toISOString().split("T")[0];
+      inputFecha.setAttribute("min", hoy);
+
+      selectPlan.addEventListener("change", () => selectPlan.classList.remove("is-invalid"));
+      selectEspecialidad.addEventListener("change", () => selectEspecialidad.classList.remove("is-invalid"));
+      inputFecha.addEventListener("change", () => inputFecha.classList.remove("is-invalid"));
+
+      inputFecha.addEventListener("change", function () {
+        bloqueHorarios.classList.remove("d-none");
+        botonContinuar.classList.add("d-none");
+        generarHorariosAleatorios();
+      });
+
+      function generarHorariosAleatorios() {
+        horariosContainer.innerHTML = "";
+        const horariosDisponibles = [];
+        for (let h = 8; h < 18; h++) {
+          horariosDisponibles.push(h.toString().padStart(2, "0") + ":00");
+          horariosDisponibles.push(h.toString().padStart(2, "0") + ":30");
+        }
+
+        const horariosAleatorios = [...horariosDisponibles]
+          .sort(() => Math.random() - 0.5)
+          .slice(0, 6)
+          .sort();
+
+        horariosAleatorios.forEach((hora, index) => {
+          const id = "hora" + index;
+          const input = document.createElement("input");
+          input.type = "radio";
+          input.className = "btn-check";
+          input.name = "horario";
+          input.id = id;
+          input.autocomplete = "off";
+
+          const label = document.createElement("label");
+          label.className = "btn btn-outline-primary flex-fill text-center";
+          label.htmlFor = id;
+          label.textContent = hora;
+
+          input.addEventListener("change", function () {
+            botonContinuar.classList.remove("d-none");
+          });
+
+          horariosContainer.appendChild(input);
+          horariosContainer.appendChild(label);
+        });
+      }
+
+      btnContinuar.addEventListener("click", function () {
+        selectPlan.classList.remove("is-invalid");
+        selectEspecialidad.classList.remove("is-invalid");
+        inputFecha.classList.remove("is-invalid");
+
+        const plan = selectPlan.value;
+        const especialidad = selectEspecialidad.value;
+        const fecha = inputFecha.value;
+        const horarioRadio = document.querySelector("input[name='horario']:checked");
+        const horario = horarioRadio ? horarioRadio.nextElementSibling.textContent : null;
+
+        let errores = false;
+
+        if (!plan) {
+          selectPlan.classList.add("is-invalid");
+          errores = true;
+        }
+
+        if (!especialidad) {
+          selectEspecialidad.classList.add("is-invalid");
+          errores = true;
+        }
+
+        if (!fecha) {
+          inputFecha.classList.add("is-invalid");
+          errores = true;
+        }
+
+        if (!horario) {
+          errores = true;
+        }
+
+        if (errores) return;
+
+        contenidoResumen.innerHTML = `
+          <strong>Turno confirmado</strong><br>
+          Plan: ${plan}<br>
+          Especialidad: ${especialidad}<br>
+          Fecha: ${fecha}<br>
+          Horario: ${horario}
+        `;
+        resumenTurno.classList.remove("d-none");
+      });
+
+      btnNuevoTurno.addEventListener("click", function () {
+        selectPlan.value = "";
+        selectEspecialidad.value = "";
+        inputFecha.value = "";
+
+        selectPlan.classList.remove("is-invalid");
+        selectEspecialidad.classList.remove("is-invalid");
+        inputFecha.classList.remove("is-invalid");
+
+        horariosContainer.innerHTML = "";
+        bloqueHorarios.classList.add("d-none");
+        botonContinuar.classList.add("d-none");
+        resumenTurno.classList.add("d-none");
+
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      // --- Cancelar Turno ---
+      const formCancelar = document.getElementById("formCancelar");
+      const confirmacionCancelacion = document.getElementById("confirmacionCancelacion");
+      const btnNuevaCancelacion = document.getElementById("btnNuevaCancelacion");
+
+      formCancelar.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const nombre = document.getElementById("nombreCancelar").value.trim();
+        const email = document.getElementById("emailCancelar").value.trim();
+        const fecha = document.getElementById("fechaCancelar").value;
+        const motivo = document.getElementById("motivoCancelar").value.trim();
+
+        if (!nombre || !email || !fecha || !motivo) return;
+
+        // Aquí podrías enviar los datos a un servidor usando fetch() si fuera necesario
+
+        formCancelar.classList.add("d-none");
+        confirmacionCancelacion.classList.remove("d-none");
+      });
+
+      btnNuevaCancelacion.addEventListener("click", function () {
+        formCancelar.reset();
+        formCancelar.classList.remove("d-none");
+        confirmacionCancelacion.classList.add("d-none");
+      });
+    });
+  </script>
+</body>
+</script>
+
 
     <footer>
       <p>&copy; 2025 @SePrise Todos los derechos reservados.</p>

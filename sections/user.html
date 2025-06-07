@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Reservar Turno</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <title>Clínica SePrise - Salud y Bienestar desde 1940</title>
+    <meta name="description"
+        content="Clínica SePrise: atención médica de calidad desde 1940. Servicios de salud, laboratorio e imagenología con tecnología de punta." />
+    <meta name="keywords" content="clínica, salud, medicina, consulta médica, exámenes, imagenología, SePrise" />
+    <meta name="author" content="Clínica SePrise" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="Clínica SePrise" />
+    <meta property="og:description" content="Desde 1940 comprometidos con tu salud y bienestar." />
+    <meta property="og:image" content="img/banner.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://tusitio.com" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<header>
+    <div class="logo">
+        <img src="../img/logo.png" alt="Logo de la clínica" />
+    </div>
+
+    <!-- Botón hamburguesa -->
+    <button class="menu-toggle" id="menuToggle">☰</button>
+
+    <!-- Menú único -->
+    <nav id="mainNav">
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+            <li> <a href="../index.html">Cerrar sesion</a></li>
+        </ul>
+    </nav>
+</header>
+
+<body class="bg-light p-3">
+    <div class="container">
+        <!-- Reservar Turno -->
+        <h3 class="mb-4">Reservar Turno</h3>
+        <div class="card p-4">
+            <form>
+                <label class="form-label" for="selectPlan">Selecciona tu plan de salud:</label>
+                <select class="form-select mb-2" id="selectPlan">
+                    <option disabled selected value="">Elija un plan</option>
+                    <option value="210">Plan individual</option>
+                    <option value="310">Plan Familiar</option>
+                    <option value="410">Particular</option>
+                    <option value="510">Seprise frecuentes</option>
+                    <option value="610">Seprise premium</option>
+                </select>
+                <div class="invalid-feedback"></div>
+
+                <label class="form-label mt-3" for="selectEspecialidad">Especialidades:</label>
+                <select class="form-select mb-2" id="selectEspecialidad">
+                    <option disabled selected value="">Elija una especialidad</option>
+                    <option value="Pediatría">Laboratorio General</option>
+                    <option value="Oftalmología">Análisis de Sangre</option>
+                    <option value="Odontología">Espermograma</option>
+                    <option value="Traumatología">Celiaquía</option>
+                    <option value="Cardiología">ADN prenatal</option>
+                    <option value="Endocrinología">Covid-19</option>
+                    <option value="Ginecología">Dengue</option>
+                    <option value="Otorrinolaringología">Trombofilia</option>
+                    <option value="Psiquiatría">Embarazo</option>
+                    <option value="Dermatología">Cariotipos</option>
+                </select>
+                <div class="invalid-feedback"></div>
+
+                <label class="form-label mt-3" for="fecha">Selecciona una fecha:</label>
+                <input class="form-control mb-2" id="fecha" type="date" />
+                <div class="invalid-feedback"></div>
+            </form>
+
+            <div class="d-none mt-4" id="bloqueHorarios">
+                <label class="fw-bold mb-2">Horarios disponibles</label>
+                <div class="d-flex flex-wrap gap-2 mb-2" id="horariosContainer"></div>
+            </div>
+
+            <div class="input-group d-none mt-3" id="botonContinuar">
+                <button class="btn btn-outline-success" id="btnContinuar" type="button">Continuar</button>
+            </div>
+
+            <div class="alert alert-success mt-4 d-none" id="resumenTurno">
+                <div id="contenidoResumen"></div>
+                <button class="btn btn-sm btn-light mt-3" id="btnNuevoTurno">Reservar otro turno</button>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const selectPlan = document.getElementById("selectPlan");
+                const selectEspecialidad = document.getElementById("selectEspecialidad");
+                const inputFecha = document.getElementById("fecha");
+                const horariosContainer = document.getElementById("horariosContainer");
+                const bloqueHorarios = document.getElementById("bloqueHorarios");
+                const botonContinuar = document.getElementById("botonContinuar");
+                const btnContinuar = document.getElementById("btnContinuar");
+                const resumenTurno = document.getElementById("resumenTurno");
+                const contenidoResumen = document.getElementById("contenidoResumen");
+                const btnNuevoTurno = document.getElementById("btnNuevoTurno");
+
+                const hoy = new Date().toISOString().split("T")[0];
+                inputFecha.setAttribute("min", hoy);
+
+                selectPlan.addEventListener("change", () => selectPlan.classList.remove("is-invalid"));
+                selectEspecialidad.addEventListener("change", () => selectEspecialidad.classList.remove("is-invalid"));
+                inputFecha.addEventListener("change", () => inputFecha.classList.remove("is-invalid"));
+
+                inputFecha.addEventListener("change", function () {
+                    bloqueHorarios.classList.remove("d-none");
+                    botonContinuar.classList.add("d-none");
+                    generarHorariosAleatorios();
+                });
+
+                function generarHorariosAleatorios() {
+                    horariosContainer.innerHTML = "";
+                    const horariosDisponibles = [];
+                    for (let h = 8; h < 18; h++) {
+                        horariosDisponibles.push(h.toString().padStart(2, "0") + ":00");
+                        horariosDisponibles.push(h.toString().padStart(2, "0") + ":30");
+                    }
+
+                    const horariosAleatorios = [...horariosDisponibles]
+                        .sort(() => Math.random() - 0.5)
+                        .slice(0, 6)
+                        .sort();
+
+                    horariosAleatorios.forEach((hora, index) => {
+                        const id = "hora" + index;
+
+                        const input = document.createElement("input");
+                        input.type = "radio";
+                        input.className = "btn-check";
+                        input.name = "horario";
+                        input.id = id;
+                        input.autocomplete = "off";
+
+                        const label = document.createElement("label");
+                        label.className = "btn btn-outline-primary flex-fill text-center";
+                        label.htmlFor = id;
+                        label.textContent = hora;
+
+                        input.addEventListener("change", function () {
+                            botonContinuar.classList.remove("d-none");
+                        });
+
+                        horariosContainer.appendChild(input);
+                        horariosContainer.appendChild(label);
+                    });
+                }
+
+                btnContinuar.addEventListener("click", function () {
+                    const plan = selectPlan.value;
+                    const especialidad = selectEspecialidad.value;
+                    const fecha = inputFecha.value;
+                    const horarioRadio = document.querySelector("input[name='horario']:checked");
+                    const horario = horarioRadio ? horarioRadio.nextElementSibling.textContent : null;
+
+                    let errores = false;
+
+                    if (!plan) {
+                        selectPlan.classList.add("is-invalid");
+                        errores = true;
+                    }
+
+                    if (!especialidad) {
+                        selectEspecialidad.classList.add("is-invalid");
+                        errores = true;
+                    }
+
+                    if (!fecha) {
+                        inputFecha.classList.add("is-invalid");
+                        errores = true;
+                    }
+
+                    if (!horario) {
+                        errores = true;
+                    }
+
+                    if (errores) return;
+
+                    contenidoResumen.innerHTML = `
+            <strong>Turno confirmado</strong><br>
+            Plan: ${plan}<br>
+            Especialidad: ${especialidad}<br>
+            Fecha: ${fecha}<br>
+            Horario: ${horario}
+        `;
+                    resumenTurno.classList.remove("d-none");
+                });
+
+                btnNuevoTurno.addEventListener("click", function () {
+                    selectPlan.value = "";
+                    selectEspecialidad.value = "";
+                    inputFecha.value = "";
+
+                    selectPlan.classList.remove("is-invalid");
+                    selectEspecialidad.classList.remove("is-invalid");
+                    inputFecha.classList.remove("is-invalid");
+
+                    horariosContainer.innerHTML = "";
+                    bloqueHorarios.classList.add("d-none");
+                    botonContinuar.classList.add("d-none");
+                    resumenTurno.classList.add("d-none");
+
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
+        </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // --- Reservar Turno ---
+                const selectPlan = document.getElementById("selectPlan");
+                const selectEspecialidad = document.getElementById("selectEspecialidad");
+                const inputFecha = document.getElementById("fecha");
+                const horariosContainer = document.getElementById("horariosContainer");
+                const bloqueHorarios = document.getElementById("bloqueHorarios");
+                const botonContinuar = document.getElementById("botonContinuar");
+                const btnContinuar = document.getElementById("btnContinuar");
+                const resumenTurno = document.getElementById("resumenTurno");
+                const contenidoResumen = document.getElementById("contenidoResumen");
+                const btnNuevoTurno = document.getElementById("btnNuevoTurno");
+
+                const hoy = new Date().toISOString().split("T")[0];
+                inputFecha.setAttribute("min", hoy);
+
+                selectPlan.addEventListener("change", () => selectPlan.classList.remove("is-invalid"));
+                selectEspecialidad.addEventListener("change", () => selectEspecialidad.classList.remove("is-invalid"));
+                inputFecha.addEventListener("change", () => inputFecha.classList.remove("is-invalid"));
+
+                inputFecha.addEventListener("change", function () {
+                    bloqueHorarios.classList.remove("d-none");
+                    botonContinuar.classList.add("d-none");
+                    generarHorariosAleatorios();
+                });
+
+                function generarHorariosAleatorios() {
+                    horariosContainer.innerHTML = "";
+                    const horariosDisponibles = [];
+                    for (let h = 8; h < 18; h++) {
+                        horariosDisponibles.push(h.toString().padStart(2, "0") + ":00");
+                        horariosDisponibles.push(h.toString().padStart(2, "0") + ":30");
+                    }
+
+                    const horariosAleatorios = [...horariosDisponibles]
+                        .sort(() => Math.random() - 0.5)
+                        .slice(0, 6)
+                        .sort();
+
+                    horariosAleatorios.forEach((hora, index) => {
+                        const id = "hora" + index;
+                        const input = document.createElement("input");
+                        input.type = "radio";
+                        input.className = "btn-check";
+                        input.name = "horario";
+                        input.id = id;
+                        input.autocomplete = "off";
+
+                        const label = document.createElement("label");
+                        label.className = "btn btn-outline-primary flex-fill text-center";
+                        label.htmlFor = id;
+                        label.textContent = hora;
+
+                        input.addEventListener("change", function () {
+                            botonContinuar.classList.remove("d-none");
+                        });
+
+                        horariosContainer.appendChild(input);
+                        horariosContainer.appendChild(label);
+                    });
+                }
+
+                btnContinuar.addEventListener("click", function () {
+                    selectPlan.classList.remove("is-invalid");
+                    selectEspecialidad.classList.remove("is-invalid");
+                    inputFecha.classList.remove("is-invalid");
+
+                    const plan = selectPlan.value;
+                    const especialidad = selectEspecialidad.value;
+                    const fecha = inputFecha.value;
+                    const horarioRadio = document.querySelector("input[name='horario']:checked");
+                    const horario = horarioRadio ? horarioRadio.nextElementSibling.textContent : null;
+
+                    let errores = false;
+
+                    if (!plan) {
+                        selectPlan.classList.add("is-invalid");
+                        errores = true;
+                    }
+
+                    if (!especialidad) {
+                        selectEspecialidad.classList.add("is-invalid");
+                        errores = true;
+                    }
+
+                    if (!fecha) {
+                        inputFecha.classList.add("is-invalid");
+                        errores = true;
+                    }
+
+                    if (!horario) {
+                        errores = true;
+                    }
+
+                    if (errores) return;
+
+                    contenidoResumen.innerHTML = `
+                <strong>Turno confirmado</strong><br>
+                Plan: ${plan}<br>
+                Especialidad: ${especialidad}<br>
+                Fecha: ${fecha}<br>
+                Horario: ${horario}
+            `;
+                    resumenTurno.classList.remove("d-none");
+                });
+
+                btnNuevoTurno.addEventListener("click", function () {
+                    selectPlan.value = "";
+                    selectEspecialidad.value = "";
+                    inputFecha.value = "";
+
+                    selectPlan.classList.remove("is-invalid");
+                    selectEspecialidad.classList.remove("is-invalid");
+                    inputFecha.classList.remove("is-invalid");
+
+                    horariosContainer.innerHTML = "";
+                    bloqueHorarios.classList.add("d-none");
+                    botonContinuar.classList.add("d-none");
+                    resumenTurno.classList.add("d-none");
+
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                });
+            });
+        </script> <!-- ✅ Este cierre faltaba -->
+</body>
+
+<section id="contacto" class="contacto">
+    <h2>Contacto</h2>
+    <img src="../img/Contacto.png" alt="Imagen del local de la clínica" />
+    <div class="contacto-detalle">
+        <p><strong>Dirección:</strong> Calle Falsa 123, Ciudad, País</p>
+        <p><strong>Teléfono:</strong> +54 911548965</p>
+        <p><strong>Email:</strong> info@SePrise.com</p>
+    </div>
+  <form id="formContacto" onsubmit="return confirmarEnvio();">
+    <input type="text" name="nombre" placeholder="Tu Nombre" required />
+    <input type="email" name="email" placeholder="Tu Email" required />
+    <textarea name="mensaje" placeholder="Tu Mensaje" required></textarea>
+    <button type="submit">Enviar</button>
+</form>
+
+<script>
+  function confirmarEnvio() {
+    alert("¡Formulario enviado con éxito!");
+    // Reiniciar formulario
+    document.getElementById("formContacto").reset();
+    return false; // Evita recargar o redirigir la página
+  }
+</script>
+</section>
+
+<footer>
+    <p>&copy; 2025 @SePrise Todos los derechos reservados.</p>
+</footer>
+
+<button id="scrollTopButton" title="Volver arriba">↑</button>
+<script src="../js/scrollTopButton.js"></script>
+<script src="../js/toggleMenu.js"></script>
+
+</html>

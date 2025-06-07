@@ -41,10 +41,11 @@ document.querySelector('#login-form').addEventListener('submit', function (e) {
     const adminPassword = 'admin123';
 
     if (email === "admin@admin.com" && password === "admin1234") {
-        window.location.href = 'admin.html'; // Redirigir si es correcto
+        window.location.href = 'admin.html'; // Redirigir admin
+    } else if (email === "user@user.com" && password === "user1234") {
+        window.location.href = 'user.html'; // Redirigir usuario normal
     } else {
-         alert('Credenciales incorrectas. Serás redirigido al inicio.');
-         window.location.href = '../index.html'; // Mostrar error
-         
+        alert('Credenciales incorrectas. Serás redirigido al inicio.');
+        window.location.href = '../index.html'; // Mostrar error y redirigir
     }
 });

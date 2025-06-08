@@ -97,252 +97,151 @@
             </div>
         </div>
 
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                const selectPlan = document.getElementById("selectPlan");
-                const selectEspecialidad = document.getElementById("selectEspecialidad");
-                const inputFecha = document.getElementById("fecha");
-                const horariosContainer = document.getElementById("horariosContainer");
-                const bloqueHorarios = document.getElementById("bloqueHorarios");
-                const botonContinuar = document.getElementById("botonContinuar");
-                const btnContinuar = document.getElementById("btnContinuar");
-                const resumenTurno = document.getElementById("resumenTurno");
-                const contenidoResumen = document.getElementById("contenidoResumen");
-                const btnNuevoTurno = document.getElementById("btnNuevoTurno");
+       <script>
+    // Ejecuta el código cuando el DOM esté completamente cargado
+    document.addEventListener("DOMContentLoaded", function () {
+        // --- Referencias a los elementos del DOM ---
+        const selectPlan = document.getElementById("selectPlan");
+        const selectEspecialidad = document.getElementById("selectEspecialidad");
+        const inputFecha = document.getElementById("fecha");
+        const horariosContainer = document.getElementById("horariosContainer");
+        const bloqueHorarios = document.getElementById("bloqueHorarios");
+        const botonContinuar = document.getElementById("botonContinuar");
+        const btnContinuar = document.getElementById("btnContinuar");
+        const resumenTurno = document.getElementById("resumenTurno");
+        const contenidoResumen = document.getElementById("contenidoResumen");
+        const btnNuevoTurno = document.getElementById("btnNuevoTurno");
 
-                const hoy = new Date().toISOString().split("T")[0];
-                inputFecha.setAttribute("min", hoy);
+        // --- Establece la fecha mínima permitida como hoy (no se pueden seleccionar fechas pasadas) ---
+        const hoy = new Date().toISOString().split("T")[0];
+        inputFecha.setAttribute("min", hoy);
 
-                selectPlan.addEventListener("change", () => selectPlan.classList.remove("is-invalid"));
-                selectEspecialidad.addEventListener("change", () => selectEspecialidad.classList.remove("is-invalid"));
-                inputFecha.addEventListener("change", () => inputFecha.classList.remove("is-invalid"));
+        // --- Elimina clases de error al cambiar los valores ---
+        selectPlan.addEventListener("change", () => selectPlan.classList.remove("is-invalid"));
+        selectEspecialidad.addEventListener("change", () => selectEspecialidad.classList.remove("is-invalid"));
+        inputFecha.addEventListener("change", () => inputFecha.classList.remove("is-invalid"));
 
-                inputFecha.addEventListener("change", function () {
-                    bloqueHorarios.classList.remove("d-none");
-                    botonContinuar.classList.add("d-none");
-                    generarHorariosAleatorios();
+        // --- Al seleccionar una fecha, muestra el bloque de horarios y genera nuevos horarios ---
+        inputFecha.addEventListener("change", function () {
+            bloqueHorarios.classList.remove("d-none");
+            botonContinuar.classList.add("d-none"); // Oculta el botón continuar hasta que se elija un horario
+            generarHorariosAleatorios();           // Genera horarios aleatorios disponibles
+        });
+
+        // --- Función para generar horarios disponibles aleatorios entre 08:00 y 17:30 ---
+        function generarHorariosAleatorios() {
+            horariosContainer.innerHTML = ""; // Limpia los horarios anteriores
+
+            const horariosDisponibles = [];
+            for (let h = 8; h < 18; h++) {
+                horariosDisponibles.push(h.toString().padStart(2, "0") + ":00");
+                horariosDisponibles.push(h.toString().padStart(2, "0") + ":30");
+            }
+
+            // Mezcla los horarios y selecciona 6 aleatoriamente
+            const horariosAleatorios = [...horariosDisponibles]
+                .sort(() => Math.random() - 0.5)
+                .slice(0, 6)
+                .sort(); // Ordena los horarios seleccionados
+
+            // Crea botones tipo radio para cada horario
+            horariosAleatorios.forEach((hora, index) => {
+                const id = "hora" + index;
+
+                const input = document.createElement("input");
+                input.type = "radio";
+                input.className = "btn-check";
+                input.name = "horario";
+                input.id = id;
+                input.autocomplete = "off";
+
+                const label = document.createElement("label");
+                label.className = "btn btn-outline-primary flex-fill text-center";
+                label.htmlFor = id;
+                label.textContent = hora;
+
+                // Muestra el botón continuar al seleccionar un horario
+                input.addEventListener("change", function () {
+                    botonContinuar.classList.remove("d-none");
                 });
 
-                function generarHorariosAleatorios() {
-                    horariosContainer.innerHTML = "";
-                    const horariosDisponibles = [];
-                    for (let h = 8; h < 18; h++) {
-                        horariosDisponibles.push(h.toString().padStart(2, "0") + ":00");
-                        horariosDisponibles.push(h.toString().padStart(2, "0") + ":30");
-                    }
-
-                    const horariosAleatorios = [...horariosDisponibles]
-                        .sort(() => Math.random() - 0.5)
-                        .slice(0, 6)
-                        .sort();
-
-                    horariosAleatorios.forEach((hora, index) => {
-                        const id = "hora" + index;
-
-                        const input = document.createElement("input");
-                        input.type = "radio";
-                        input.className = "btn-check";
-                        input.name = "horario";
-                        input.id = id;
-                        input.autocomplete = "off";
-
-                        const label = document.createElement("label");
-                        label.className = "btn btn-outline-primary flex-fill text-center";
-                        label.htmlFor = id;
-                        label.textContent = hora;
-
-                        input.addEventListener("change", function () {
-                            botonContinuar.classList.remove("d-none");
-                        });
-
-                        horariosContainer.appendChild(input);
-                        horariosContainer.appendChild(label);
-                    });
-                }
-
-                btnContinuar.addEventListener("click", function () {
-                    const plan = selectPlan.value;
-                    const especialidad = selectEspecialidad.value;
-                    const fecha = inputFecha.value;
-                    const horarioRadio = document.querySelector("input[name='horario']:checked");
-                    const horario = horarioRadio ? horarioRadio.nextElementSibling.textContent : null;
-
-                    let errores = false;
-
-                    if (!plan) {
-                        selectPlan.classList.add("is-invalid");
-                        errores = true;
-                    }
-
-                    if (!especialidad) {
-                        selectEspecialidad.classList.add("is-invalid");
-                        errores = true;
-                    }
-
-                    if (!fecha) {
-                        inputFecha.classList.add("is-invalid");
-                        errores = true;
-                    }
-
-                    if (!horario) {
-                        errores = true;
-                    }
-
-                    if (errores) return;
-
-                    contenidoResumen.innerHTML = `
-            <strong>Turno confirmado</strong><br>
-            Plan: ${plan}<br>
-            Especialidad: ${especialidad}<br>
-            Fecha: ${fecha}<br>
-            Horario: ${horario}
-        `;
-                    resumenTurno.classList.remove("d-none");
-                });
-
-                btnNuevoTurno.addEventListener("click", function () {
-                    selectPlan.value = "";
-                    selectEspecialidad.value = "";
-                    inputFecha.value = "";
-
-                    selectPlan.classList.remove("is-invalid");
-                    selectEspecialidad.classList.remove("is-invalid");
-                    inputFecha.classList.remove("is-invalid");
-
-                    horariosContainer.innerHTML = "";
-                    bloqueHorarios.classList.add("d-none");
-                    botonContinuar.classList.add("d-none");
-                    resumenTurno.classList.add("d-none");
-
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
+                horariosContainer.appendChild(input);
+                horariosContainer.appendChild(label);
             });
-        </script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                // --- Reservar Turno ---
-                const selectPlan = document.getElementById("selectPlan");
-                const selectEspecialidad = document.getElementById("selectEspecialidad");
-                const inputFecha = document.getElementById("fecha");
-                const horariosContainer = document.getElementById("horariosContainer");
-                const bloqueHorarios = document.getElementById("bloqueHorarios");
-                const botonContinuar = document.getElementById("botonContinuar");
-                const btnContinuar = document.getElementById("btnContinuar");
-                const resumenTurno = document.getElementById("resumenTurno");
-                const contenidoResumen = document.getElementById("contenidoResumen");
-                const btnNuevoTurno = document.getElementById("btnNuevoTurno");
+        }
 
-                const hoy = new Date().toISOString().split("T")[0];
-                inputFecha.setAttribute("min", hoy);
+        // --- Al hacer clic en "Continuar", valida los datos y muestra un resumen del turno ---
+        btnContinuar.addEventListener("click", function () {
+            // Limpia errores anteriores
+            selectPlan.classList.remove("is-invalid");
+            selectEspecialidad.classList.remove("is-invalid");
+            inputFecha.classList.remove("is-invalid");
 
-                selectPlan.addEventListener("change", () => selectPlan.classList.remove("is-invalid"));
-                selectEspecialidad.addEventListener("change", () => selectEspecialidad.classList.remove("is-invalid"));
-                inputFecha.addEventListener("change", () => inputFecha.classList.remove("is-invalid"));
+            // Obtiene los valores ingresados por el usuario
+            const plan = selectPlan.value;
+            const especialidad = selectEspecialidad.value;
+            const fecha = inputFecha.value;
+            const horarioRadio = document.querySelector("input[name='horario']:checked");
+            const horario = horarioRadio ? horarioRadio.nextElementSibling.textContent : null;
 
-                inputFecha.addEventListener("change", function () {
-                    bloqueHorarios.classList.remove("d-none");
-                    botonContinuar.classList.add("d-none");
-                    generarHorariosAleatorios();
-                });
+            let errores = false;
 
-                function generarHorariosAleatorios() {
-                    horariosContainer.innerHTML = "";
-                    const horariosDisponibles = [];
-                    for (let h = 8; h < 18; h++) {
-                        horariosDisponibles.push(h.toString().padStart(2, "0") + ":00");
-                        horariosDisponibles.push(h.toString().padStart(2, "0") + ":30");
-                    }
+            // --- Validación de campos obligatorios ---
+            if (!plan) {
+                selectPlan.classList.add("is-invalid");
+                errores = true;
+            }
 
-                    const horariosAleatorios = [...horariosDisponibles]
-                        .sort(() => Math.random() - 0.5)
-                        .slice(0, 6)
-                        .sort();
+            if (!especialidad) {
+                selectEspecialidad.classList.add("is-invalid");
+                errores = true;
+            }
 
-                    horariosAleatorios.forEach((hora, index) => {
-                        const id = "hora" + index;
-                        const input = document.createElement("input");
-                        input.type = "radio";
-                        input.className = "btn-check";
-                        input.name = "horario";
-                        input.id = id;
-                        input.autocomplete = "off";
+            if (!fecha) {
+                inputFecha.classList.add("is-invalid");
+                errores = true;
+            }
 
-                        const label = document.createElement("label");
-                        label.className = "btn btn-outline-primary flex-fill text-center";
-                        label.htmlFor = id;
-                        label.textContent = hora;
+            if (!horario) {
+                errores = true;
+            }
 
-                        input.addEventListener("change", function () {
-                            botonContinuar.classList.remove("d-none");
-                        });
+            if (errores) return; // Si hay errores, detiene el flujo
 
-                        horariosContainer.appendChild(input);
-                        horariosContainer.appendChild(label);
-                    });
-                }
-
-                btnContinuar.addEventListener("click", function () {
-                    selectPlan.classList.remove("is-invalid");
-                    selectEspecialidad.classList.remove("is-invalid");
-                    inputFecha.classList.remove("is-invalid");
-
-                    const plan = selectPlan.value;
-                    const especialidad = selectEspecialidad.value;
-                    const fecha = inputFecha.value;
-                    const horarioRadio = document.querySelector("input[name='horario']:checked");
-                    const horario = horarioRadio ? horarioRadio.nextElementSibling.textContent : null;
-
-                    let errores = false;
-
-                    if (!plan) {
-                        selectPlan.classList.add("is-invalid");
-                        errores = true;
-                    }
-
-                    if (!especialidad) {
-                        selectEspecialidad.classList.add("is-invalid");
-                        errores = true;
-                    }
-
-                    if (!fecha) {
-                        inputFecha.classList.add("is-invalid");
-                        errores = true;
-                    }
-
-                    if (!horario) {
-                        errores = true;
-                    }
-
-                    if (errores) return;
-
-                    contenidoResumen.innerHTML = `
+            // --- Muestra el resumen del turno confirmado ---
+            contenidoResumen.innerHTML = `
                 <strong>Turno confirmado</strong><br>
                 Plan: ${plan}<br>
                 Especialidad: ${especialidad}<br>
                 Fecha: ${fecha}<br>
                 Horario: ${horario}
             `;
-                    resumenTurno.classList.remove("d-none");
-                });
+            resumenTurno.classList.remove("d-none");
+        });
 
-                btnNuevoTurno.addEventListener("click", function () {
-                    selectPlan.value = "";
-                    selectEspecialidad.value = "";
-                    inputFecha.value = "";
+        // --- Al hacer clic en "Nuevo Turno", reinicia todos los valores del formulario ---
+        btnNuevoTurno.addEventListener("click", function () {
+            // Restablece campos a su valor inicial
+            selectPlan.value = "";
+            selectEspecialidad.value = "";
+            inputFecha.value = "";
 
-                    selectPlan.classList.remove("is-invalid");
-                    selectEspecialidad.classList.remove("is-invalid");
-                    inputFecha.classList.remove("is-invalid");
+            // Elimina estilos de error
+            selectPlan.classList.remove("is-invalid");
+            selectEspecialidad.classList.remove("is-invalid");
+            inputFecha.classList.remove("is-invalid");
 
-                    horariosContainer.innerHTML = "";
-                    bloqueHorarios.classList.add("d-none");
-                    botonContinuar.classList.add("d-none");
-                    resumenTurno.classList.add("d-none");
+            // Oculta y limpia secciones del formulario
+            horariosContainer.innerHTML = "";
+            bloqueHorarios.classList.add("d-none");
+            botonContinuar.classList.add("d-none");
+            resumenTurno.classList.add("d-none");
 
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                });
-            });
-        </script> <!-- ✅ Este cierre faltaba -->
+            // Hace scroll al inicio de la página
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    });
+</script>
 </body>
 
 <section id="contacto" class="contacto">

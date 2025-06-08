@@ -38,7 +38,7 @@ document.querySelector('#login-form').addEventListener('submit', function (e) {
     const password = document.querySelector('#password').value.trim();
 
     const adminEmail = 'admin@admin.com';
-    const adminPassword = 'admin123';
+    const adminPassword = 'admin1234';
 
     if (email === "admin@admin.com" && password === "admin1234") {
         window.location.href = 'admin.html'; // Redirigir admin
